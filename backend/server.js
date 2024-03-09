@@ -1,17 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
-import { authRouter, messageRouter } from "./routes/index.js";
+import { authRouter, messageRouter, userRoute } from "./routes/index.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
 dotenv.config();
 
-app.use(express.json());
+app.use(express.json()); // to pass in the req json
+app.use(cookieParser()); // to pass in the authorization
 
 app.use("/api/auth", authRouter);
 
 app.use("/api/message", messageRouter);
+
+app.use("/api/users", userRoute);
 
 const PORT = process.env.PORT || 5000;
 

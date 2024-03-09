@@ -7,7 +7,7 @@ const MessageSchema = new mongoose.Schema(
       ref: "User",
       required: true,
     },
-    reserverId: {
+    receiverId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
@@ -20,6 +20,6 @@ const MessageSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Messages = mongoose.model("Message", MessageSchema);
+const Message = mongoose.model("Message", MessageSchema);
 
-export default Messages;
+export default Message;
